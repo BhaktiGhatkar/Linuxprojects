@@ -1,0 +1,17 @@
+Error received:   fatal: parameter inet_interfaces: no local interface found for ::1 postfix
+
+When:  While starting postfix
+
+Where: Test system
+
+Fix: 
+
+
+Edit the file /etc/postfix/main.cf
+vim /etc/postfix/main.cf
+search for the line inet_interfaces = all
+And change it to:
+inet_interfaces = 127.0.0.1, 10.10.11.12 10.10.11.12 is your local IP address
+:wq! Save and exit
+
+If the above, still does not fix, then go to /etc/hosts and comment the line for ::1
