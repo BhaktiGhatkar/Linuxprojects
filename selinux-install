@@ -1,0 +1,47 @@
+#Check existing packages
+
+rpm -qa | grep selinux
+
+
+The output should look something like this:
+
+libselinux-utils-2.2.2-6.el7.x86_64
+libselinux-2.2.2-6.el7.x86_64
+selinux-policy-targeted-3.12.1-153.el7.noarch
+selinux-policy-3.12.1-153.el7.noarch
+libselinux-python-2.2.2-6.el7.x86_64
+You can go ahead and install all the packages with the command below (yum will just update any you already have), or just the ones that you find missing from your system:
+
+yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setroubleshoot-server setools setools-console mcstrans
+
+#run the getenforce command to check the current SELinux mode
+
+getenforce
+SELinux should currently be disabled, so the output will look like this:
+
+Disabled
+
+#We can also run the sestatus command:
+
+sestatus
+When SELinux is disabled the output will show:
+
+SELinux status:        disabled
+
+#SELinux Configuration File
+The main configuration file for SELinux is /etc/selinux/config. We can run the following command to view its contents:
+
+cat /etc/selinux/config
+The output will look something like this:
+
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=disabled
+# SELINUXTYPE= can take one of these two values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected. 
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted
