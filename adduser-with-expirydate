@@ -1,0 +1,9 @@
+Centos 7
+
+useradd -e YYYY-MM-DD username
+
+useradd -e 2021-02-21 anita
+
+
+#command to verify expiration details
+chage -l anita
