@@ -1,0 +1,7 @@
+Add Banner template to server
+
+suppose you have a banner template file.
+
+Ssh into the server and copy the file into the server
+
+cat <banner_template_file /etc/motd
