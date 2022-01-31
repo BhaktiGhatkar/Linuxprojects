@@ -1,0 +1,13 @@
+cat /etc/redhat-release 
+CentOS Linux release 7.6.1810 (Core)
+#below steps have been done as root user
+
+yum install -y cronie
+
+systemctl start crond
+
+#put a new crontab entry and save
+
+crontab -e
+
+*/5 * * * * echo hello > /tmp/cron_text
